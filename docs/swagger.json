@@ -1,0 +1,1693 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/dictionary": {
+            "get": {
+                "description": "获取字典信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取字典信息",
+                "responses": {}
+            }
+        },
+        "/api/org/create": {
+            "post": {
+                "description": "创建组织",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "创建组织",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Org"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/delete": {
+            "post": {
+                "description": "删除组织",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "删除组织",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Org"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/list": {
+            "get": {
+                "description": "获取组织列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取组织列表",
+                "responses": {}
+            }
+        },
+        "/api/org/role/auth": {
+            "post": {
+                "description": "给组织的用户授权角色,默认情况下,分配授权角色就会获得角色授权有的授权,如需要取消某些授权,则需要手动处理取消.取消对应授权角色同时删除对应授权数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "给组织的用户授权角色或取消授权角色",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.AuthArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/role/auth/status": {
+            "post": {
+                "description": "给组织的用户已授权的角色变更状态,启用或禁用",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "给组织的用户已授权的角色变更状态",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.AuthArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/role/auth/tool": {
+            "post": {
+                "description": "给组织用户的角色授权工具",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "给组织用户的角色授权工具",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.AuthArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/role/auth/tool/route": {
+            "post": {
+                "description": "给组织用户的角色的工具授权路由",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "给组织用户的角色的工具授权路由",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.AuthArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/role/list": {
+            "get": {
+                "description": "获取组织下所有的角色列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取组织下所有的角色列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "end",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "组织id",
+                        "name": "orgId",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "页号 number",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 5,
+                        "type": "integer",
+                        "description": "分页 size",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "start",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "description": "更新组织信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "更新组织信息",
+                "parameters": [
+                    {
+                        "description": "查询参数",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.UpdateOrg"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/user/all": {
+            "get": {
+                "description": "获取所有的用户列表",
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取所有的用户列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "结束",
+                        "name": "end",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "组织id",
+                        "name": "orgId",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 5,
+                        "type": "integer",
+                        "description": "分页大小",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "开始",
+                        "name": "start",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/user/list": {
+            "get": {
+                "description": "获取组织下所有的用户列表",
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取组织下所有的用户列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "结束",
+                        "name": "end",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "组织id",
+                        "name": "orgId",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "minimum": 5,
+                        "type": "integer",
+                        "description": "分页大小",
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "开始",
+                        "name": "start",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/user/tool": {
+            "get": {
+                "description": "获取组织指定用户的所有已授权工具列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取组织指定用户的所有已授权工具列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "角色id",
+                        "name": "roleId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "组织id",
+                        "name": "orgId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户id",
+                        "name": "userId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/org/user/tool/router": {
+            "get": {
+                "description": "获取组织指定用户的所有已授权工具下的所有路由树",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理系统"
+                ],
+                "summary": "获取组织指定用户的所有已授权工具下的所有路由树",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "角色id",
+                        "name": "roleId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "组织id",
+                        "name": "orgId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户id",
+                        "name": "userId",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "工具id",
+                        "name": "toolId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/settings": {
+            "post": {
+                "description": "获取用户设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "获取用户设置",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SettingsArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/settings/update": {
+            "post": {
+                "description": "更新用户设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户设置",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SettingsArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/org/update/org": {
+            "post": {
+                "description": "用户修改登录系统的默认组织,用户智能有一个默认组织",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "设置用户的默认组织",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.UpdateUserOrgArgs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/org/update/role": {
+            "post": {
+                "description": "用户修改指定组织的默认角色",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "设置指定组织的默认角色",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.UpdateUserOrgRole"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/secure/check/password": {
+            "post": {
+                "description": "验证用户密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "验证用户密码",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.PasswordVerify"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/secure/update/email": {
+            "post": {
+                "description": "更新用户邮箱",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户邮箱",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SecureArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/secure/update/password": {
+            "post": {
+                "description": "用户修改密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户密码",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SecureArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/secure/update/phone": {
+            "post": {
+                "description": "修改用户手机号",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户手机",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SecureArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/secure/update/phone/code": {
+            "get": {
+                "description": "用户手机号,获取验证码接口",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新手机获取验证码",
+                "responses": {}
+            }
+        },
+        "/api/user/secure/update/phone/code/check": {
+            "post": {
+                "description": "更新用户手机号,验证码校验",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "验证码校验",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.SecureArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/user/update": {
+            "post": {
+                "description": "更新用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户信息",
+                "parameters": [
+                    {
+                        "description": "更新参数",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.UpdateUserInfoArgs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/update/avatar": {
+            "post": {
+                "description": "更新用户头像",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "更新用户头像",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "用户头像文件",
+                        "name": "avatar",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/menu": {
+            "get": {
+                "description": "获取前端路由菜单树",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "web"
+                ],
+                "summary": "获取菜单",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Router"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/resp.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/public/forget/code": {
+            "get": {
+                "description": "(手机号/邮箱号)重置密码获取验证码",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录"
+                ],
+                "summary": "忘记密码验证",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.ForGetArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/public/forget/code/check": {
+            "post": {
+                "description": "(手机号/邮箱号)重置密码获取验证码验证",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录"
+                ],
+                "summary": "验证码验证",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.ForGetArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/public/forget/reset": {
+            "post": {
+                "description": "(手机号/邮箱号)重置密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录"
+                ],
+                "summary": "密码重置",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.ForGetArgs"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/public/login": {
+            "post": {
+                "description": "系统用户进行系统登陆",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "用户登录",
+                "parameters": [
+                    {
+                        "description": "登录参数",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.LoginArgs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/public/login_code": {
+            "get": {
+                "description": "手机号获取登录验证码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录"
+                ],
+                "summary": "登录验证码",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "string"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/public/phone": {
+            "post": {
+                "description": "用户通过手机号登录系统",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录"
+                ],
+                "summary": "手机登录",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.PhoneLoginArgs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/public/register": {
+            "post": {
+                "description": "系统用户注册",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "注册用户",
+                "parameters": [
+                    {
+                        "description": "请求体",
+                        "name": "args",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/control.RegisterArgs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "$ref": "#/definitions/model.User"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resp.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/public/secure/email/:verify": {
+            "post": {
+                "description": "验证用户密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "验证用户密码",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "验证信息",
+                        "name": "verify",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "control.AuthArgs": {
+            "type": "object",
+            "required": [
+                "auths",
+                "orgId",
+                "unAuth",
+                "userId"
+            ],
+            "properties": {
+                "auths": {
+                    "description": "待授权id",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "orgId": {
+                    "description": "组织id",
+                    "type": "string"
+                },
+                "roleId": {
+                    "description": "角色id",
+                    "type": "string"
+                },
+                "status": {
+                    "type": "boolean"
+                },
+                "toolId": {
+                    "description": "工具id",
+                    "type": "string"
+                },
+                "unAuth": {
+                    "description": "待取消授权id",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "userId": {
+                    "description": "用户id",
+                    "type": "string"
+                }
+            }
+        },
+        "control.ForGetArgs": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.LoginArgs": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "账号",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                }
+            }
+        },
+        "control.PasswordVerify": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.PhoneLoginArgs": {
+            "type": "object",
+            "required": [
+                "code",
+                "phone"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.RegisterArgs": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "账号",
+                    "type": "string"
+                },
+                "age": {
+                    "description": "年龄",
+                    "type": "integer"
+                },
+                "gender": {
+                    "description": "性别",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "昵称",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                }
+            }
+        },
+        "control.SecureArgs": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "newPassword": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.SettingsArgs": {
+            "type": "object",
+            "properties": {
+                "settingId": {
+                    "type": "string"
+                },
+                "tools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.UpdateOrg": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "pid"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 2
+                },
+                "pid": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.UpdateUserInfoArgs": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "gender": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.UpdateUserOrgArgs": {
+            "type": "object",
+            "required": [
+                "newOrgId",
+                "oldOrgId"
+            ],
+            "properties": {
+                "newOrgId": {
+                    "type": "string"
+                },
+                "oldOrgId": {
+                    "type": "string"
+                }
+            }
+        },
+        "control.UpdateUserOrgRole": {
+            "type": "object",
+            "required": [
+                "newRoleId",
+                "oldRoleId",
+                "orgId"
+            ],
+            "properties": {
+                "newRoleId": {
+                    "description": "新的默认角色id",
+                    "type": "string"
+                },
+                "oldRoleId": {
+                    "description": "老的默认角色id",
+                    "type": "string"
+                },
+                "orgId": {
+                    "description": "变更默认角色的组织id",
+                    "type": "string"
+                }
+            }
+        },
+        "model.Org": {
+            "type": "object",
+            "properties": {
+                "createTime": {
+                    "description": "成立时间",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "pid": {
+                    "description": "上级",
+                    "type": "string"
+                }
+            }
+        },
+        "model.Router": {
+            "type": "object",
+            "properties": {
+                "component": {
+                    "description": "路由组件",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "成立时间",
+                    "type": "string"
+                },
+                "icon": {
+                    "description": "图标组件",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "路由名称",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "路由路径",
+                    "type": "string"
+                },
+                "pid": {
+                    "description": "父节点",
+                    "type": "string"
+                },
+                "remark": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "sort": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "状态",
+                    "type": "boolean"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "toolId": {
+                    "description": "工具id",
+                    "type": "string"
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "账号",
+                    "type": "string"
+                },
+                "age": {
+                    "description": "年龄",
+                    "type": "integer"
+                },
+                "create_time": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "邮箱",
+                    "type": "string"
+                },
+                "gender": {
+                    "description": "性别",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "昵称",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "电话",
+                    "type": "string"
+                },
+                "picture": {
+                    "description": "头像",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "是否启用",
+                    "type": "boolean"
+                }
+            }
+        },
+        "resp.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "业务状态码",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "响应数据"
+                },
+                "msg": {
+                    "description": "附加消息",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
